@@ -1,0 +1,8 @@
+{
+  "name": "OmniDB Forensic Suite",
+  "description": "A high-end cyber forensics and fraud analysis tool designed to handle investigation data across 400+ database management systems.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "name": "omnidb-forensic-suite",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Forensic Database Analysis Tool powered by Gemini AI",
+  "main": "public/electron.js",
+  "homepage": "./",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "build-fast": "vite build --mode production",
+    "electron": "electron .",
+    "electron-dev": "concurrently \"npm run dev\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron-build": "npm run build && electron-builder",
+    "electron-build:win": "npm run build && electron-builder --win --publish never",
+    "electron-build:win-fast": "npm run build-fast && electron-builder --win --x64 --publish never",
+    "electron-build:linux": "npm run build && electron-builder --linux --publish never",
+    "electron-build:mac": "npm run build && electron-builder --mac --publish never"
+  },
+  "dependencies": {
+    "@google/genai": "^1.40.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "recharts": "^3.7.0"
+  },
+  "devDependencies": {
+    "@types/electron": "^1.4.38",
+    "@types/node": "^22.14.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "concurrently": "^8.2.2",
+    "electron": "^40.2.1",
+    "electron-builder": "^26.7.0",
+    "electron-is-dev": "^3.0.1",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0",
+    "wait-on": "^7.2.0"
+  },
+  "build": {
+    "appId": "com.bytebreachinvestigations.bytedb-analyser",
+    "productName": "ByteDB Analyser",
+    "files": [
+      "dist/**/*",
+      "public/electron.js",
+      "public/preload.js",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "ByteDB Analyser"
+    }
+  }
+}
